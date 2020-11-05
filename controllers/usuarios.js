@@ -13,7 +13,7 @@ const getUsuarios = async(req, res) => {
     }).then(result => {
         res.json({
             ok: true,
-            usuarios: result.recorset
+            usuarios: result.recordset
         });
     }).catch(err => {
         res.json(err);
@@ -36,9 +36,9 @@ const addUsuario = async(req, res) => {
             .input('password', password)
             .execute('stp_usuarios_add');
     }).then(result => {
-        res.status(201).json({
+        res.json({
             ok: true,
-            usuario: result.recorset[0]
+            usuario: result.recordset[0]
         });
     }).catch(err => {
         res.json(err);
