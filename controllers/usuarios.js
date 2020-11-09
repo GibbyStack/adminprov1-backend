@@ -41,6 +41,8 @@ const addUsuario = async(req, res = response) => {
 
 
     // Encryptar password
+    const salt = bcrypt.genSaltSync();
+
 
     // Agregar el usuario 
     sql.connect(conString).then(pool => {

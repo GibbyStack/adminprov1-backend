@@ -5,7 +5,7 @@ const { generateJWT } = require('../helpers/jwt');
 
 const login = async(req, res = response) => {
     const { email, password } = req.body;
-    const usuario;
+    let usuario;
 
     try {
         sql.on('error', err => {
@@ -16,7 +16,7 @@ const login = async(req, res = response) => {
             });
         });
 
-        sql.connect(conString).then(pool => {
+        await sql.connect(conString).then(pool => {
             return pool.request()
                 .input('email', email)
                 .execute('stp_usuarios_login');
