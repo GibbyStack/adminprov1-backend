@@ -9,6 +9,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.use(express.static('public'));
+
 app.use('/api/alumnos', require('./routes/alumnos'));
 app.use('/api/docentes', require('./routes/docentes'));
 app.use('/api/materias', require('./routes/materias'));
