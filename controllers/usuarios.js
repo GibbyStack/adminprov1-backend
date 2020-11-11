@@ -42,6 +42,7 @@ const addUsuario = async(req, res = response) => {
 
     // Encryptar password
     const salt = bcrypt.genSaltSync();
+    const newPassword = bcrypt.hashSync(password, salt);
 
 
     // Agregar el usuario 
@@ -49,7 +50,7 @@ const addUsuario = async(req, res = response) => {
         return pool.request()
             .input('nombre', nombre)
             .input('email', email)
-            .input('password', password)
+            .input('password', newPassword)
             .execute('stp_usuarios_add');
     }).then(result => {
         // const res = result.recordset[0];

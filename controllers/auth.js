@@ -1,11 +1,12 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
-
+const sql = require('mssql');
+const conString = require('../database/config');
 const { generateJWT } = require('../helpers/jwt');
 
 const login = async(req, res = response) => {
     const { email, password } = req.body;
-    let usuario;
+    let usuario = null;
 
     try {
         sql.on('error', err => {
@@ -34,6 +35,7 @@ const login = async(req, res = response) => {
         }
 
         const validPassword = bcrypt.compareSync(password, usuario.password);
+
         if (!validPassword) {
             return res.status(400).json({
                 ok: false,
