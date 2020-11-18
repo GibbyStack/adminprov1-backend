@@ -10,9 +10,9 @@ const {
     updateUsuario,
     deleteUsuario,
     getUsuario
-} = require('../controllers/usuarios');
-const { validarCampos } = require('../middlewares/validar-campos');
-const { validarJWT } = require('../middlewares/validar-jwt');
+} = require('../bml/controllers/usuarios');
+const { validarCampos } = require('../bml/middlewares/validar-campos');
+const { validarJWT } = require('../bml/middlewares/validar-jwt');
 
 const router = Router();
 

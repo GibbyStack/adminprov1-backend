@@ -1,6 +1,4 @@
 const response = require('express');
-const conString = require('../database/config');
-const sql = require('mssql');
 const bcrypt = require('bcryptjs');
 
 //Obtener Usuarios
